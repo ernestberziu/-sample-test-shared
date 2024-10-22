@@ -1,5 +1,4 @@
 {
-  /* These are the "test" options. They compile to commonjs modules for running in node/jsdom */
   "extends": "./jsconfig.json",
   "include": ["src"],
   "compilerOptions": {

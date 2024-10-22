@@ -1,18 +1,7 @@
-/*
- * Copyright (c) 2019-present Sonatype, Inc.
- * This program and the accompanying materials are made available under
- * the terms of the Eclipse Public License 2.0 which accompanies this
- * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
- */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 
-/**
- * Configuration of a webpack build whose only purpose is to compile a full CSS file of all styles for this library.
- * To avoid duplication of effort, this webpack build traverses through the typescript files to pull in all of the
- * component scss styles.
- */
 module.exports = {
   mode: 'production',
   entry: './src/react-shared-components-css.js',
@@ -71,14 +60,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'react-shared-components.css',
     }),
-
-    // this build is meant to deal with styles only, but webpack is javascript-centric and will output js and .d.ts
-    // files anyway, along with corresponding sourcemaps
     new IgnoreEmitPlugin(/\.([jt]s(\.map)?|woff)$/),
   ],
   devtool: 'source-map',
   optimization: {
-    // disable tree-shaking so we actually get all the css
     sideEffects: false,
   },
 };

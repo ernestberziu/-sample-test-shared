@@ -1,4 +1,4 @@
 {
   "extends": "./jsconfig.build.json",
-  "exclude": ["node_modules", "src/__mocks__/", "dist/"]
+  "exclude": ["node_modules", "dist/"]
 }

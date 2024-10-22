@@ -1,8 +1,8 @@
 import React from 'react';
-// import FontAwesome5 from '@timify/react-font-awesome5'
 import PropTypes from 'prop-types';
 
-import './Button.scss';
+import './Button.css';
+import FontAwesome5 from '../FontAwesome5/FontAwesome5';
 
 const TYPES = {
   isPrimary: 'ta-btn-primary',
@@ -137,7 +137,7 @@ const Button = ({
       style={style}
       {...preventHTMLKeyLeak(rest, HTML_LEAK_KEYS)}
     >
-      {/* {icon && <FontAwesome5 icon={icon} type={iconType} />} */}
+      {icon && <FontAwesome5 icon={icon} type={iconType} />}
       {children}
     </button>
   );

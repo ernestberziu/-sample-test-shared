@@ -1,0 +1,168 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-button-helpers';
+
+@mixin solid-btn-styling($variant) {
+  background-color: var(--nx-color-#{$variant}-button-background);
+  border-color: transparent;
+  color: var(--nx-color-#{$variant}-button-text);
+
+  &:hover {
+    background-color: var(--nx-color-#{$variant}-button-background-hover);
+    color: var(--nx-color-#{$variant}-button-text);
+  }
+
+  &:focus:not(:active) {
+    outline-color: var(--nx-color-#{$variant}-button-focus-outline);
+    outline-offset: calc(0px - var(--nx-focus-outline-offset) - var(--nx-focus-outline-width));
+  }
+
+  &:active {
+    background-color: var(--nx-color-#{$variant}-button-background-active);
+    border-color: transparent;
+    color: var(--nx-color-#{$variant}-button-text);
+  }
+}
+
+.nx-btn, a.nx-btn {
+  @include nx-text-helpers.semi-bold;
+
+  background-color: var(--nx-color-secondary-button-background);
+  border: var(--nx-border-width-alt) solid var(--nx-color-secondary-button-border);
+  border-radius: var(--nx-border-radius);
+  color: var(--nx-color-secondary-button-text);
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--nx-font-size);
+  line-height: var(--nx-line-height);
+  margin: 0 var(--nx-spacing-6x);
+  padding: calc(var(--nx-spacing-2x) - var(--nx-border-width-alt)) calc(var(--nx-spacing-6x) - var(--nx-border-width-alt));
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--nx-color-secondary-button-background-hover);
+    color: var(--nx-color-secondary-button-text-hover);
+  }
+
+  &:focus:not(:active) {
+    @include nx-button-helpers.bordered-btn-focus-outline("secondary");
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    background-color: var(--nx-color-secondary-button-background-active);
+    border-color: var(--nx-color-secondary-button-border-active);
+    color: var(--nx-color-secondary-button-text);
+  }
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &--primary {
+    @include solid-btn-styling("primary");
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    border-color: var(--nx-color-tertiary-button-border);
+    color: var(--nx-color-tertiary-button-text);
+
+    &:hover {
+      background-color: var(--nx-color-tertiary-button-background-hover);
+      color: var(--nx-color-tertiary-button-text);
+    }
+
+    &:focus:not(:active) {
+      outline-color: var(--nx-color-tertiary-button-focus-outline);
+    }
+
+    &:active {
+      background-color: var(--nx-color-tertiary-button-background-active);
+      border-color: var(--nx-color-tertiary-button-border-active);
+      color: var(--nx-color-tertiary-button-text);
+    }
+  }
+
+  &--error {
+    @include solid-btn-styling("error");
+
+    .nx-icon {
+      color: var(--nx-color-error-button-text);
+      height: 16px;
+    }
+  }
+  @include nx-container-helpers.container-horizontal;
+
+}
+
+.nx-btn, .nx-segmented-btn, .nx-icon-dropdown {
+  + .nx-btn, + .nx-segmented-btn, + .nx-icon-dropdown {
+    margin-left: 0;
+  }
+}
+
+.nx-btn {
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus:not(:active) {
+      background-color: var(--nx-color-disabled-button-background);
+      border-color: var(--nx-color-disabled-button-border);
+      outline: 0;
+      color: var(--nx-color-disabled-button-text);
+      cursor: default;
+    }
+  }
+}
+
+.nx-btn--icon-only {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--nx-color-text-stark);
+
+  // icon width can vary, just don't bother with padding in this direction and let the centering work it out
+  padding-left: 0;
+  padding-right: 0;
+
+  // essentially, calculate the width the same way that the height is calculated (line height plus padding and border)
+  width: calc(1em * var(--nx-line-height) + 2 * var(--nx-spacing-2x));
+
+  &:hover {
+    background-color: var(--nx-color-interactive-background-hover);
+    color: var(--nx-color-text-stark);
+  }
+
+  &:focus:not(:active) {
+    outline: var(--nx-focus-outline-width) solid var(--nx-color-button-icon-only-border-focus);
+    outline-offset: calc(0px - var(--nx-focus-outline-width));
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+    border-color: transparent;
+    color: var(--nx-color-text-stark);
+  }
+
+  .nx-icon {
+    height: 1em;
+  }
+
+  &.disabled, &[disabled] {
+    &, &:hover, &:focus:not(:active) {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--nx-color-text-disabled);
+      outline: none;
+    }
+  }
+}

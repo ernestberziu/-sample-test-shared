@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+/**
+ * This is the "entrypoint" for files in this directory.  These files represent styles that should be included by
+ * any consumer of the react-shared-components lib
+ */
+
+@use '@fortawesome/fontawesome-svg-core/styles';
+
+@use 'nx-variables';
+@use 'nx-colors';
+@use 'nx-color-swatches';
+@use 'nx-globals';
+@use 'nx-typography';
+
+@use 'nx-page-header';
+@use 'nx-page-layout';
+@use 'nx-global-header';
+@use 'nx-page';
+@use 'nx-footer';
+@use 'nx-tile';
+@use 'nx-alert';
+@use 'nx-btn';
+@use 'nx-btn-bar';
+@use 'nx-lists';
+@use 'nx-tables';
+@use 'nx-grid';
+@use 'nx-icon';
+@use 'nx-counter';
+@use 'nx-threat-number';
+@use 'nx-forms';
+@use 'nx-radio-checkbox';
+@use 'nx-card';
+@use 'nx-pagination';
+@use 'nx-viewport-sized';
+@use 'nx-read-only';
+@use 'nx-system-notice';
+@use 'nx-divider';
+@use 'nx-text-link';
+@use 'nx-field-validation-message';
+@use 'nx-status-indicator';

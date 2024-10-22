@@ -1,0 +1,102 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-dark-mode-helpers';
+
+:root {
+  // page dimensions
+  --nx-width-page-max: 1600px;
+  --nx-width-page-min: 1366px;
+  --nx-width-content-proportion: 0.76;
+  --nx-width-content: calc(100% * var(--nx-width-content-proportion));
+  --nx-width-sidebar: calc(100% - var(--nx-width-content));
+  --nx-width-sidebar-max: calc((1 - var(--nx-width-content-proportion)) * var(--nx-width-page-max));
+  --nx-width-scrollbar: 15px;
+  --nx-width-form-element-normal: 300px;
+  --nx-width-form-element-wide: 800px;
+  --nx-width-form-element-short: 150px;
+  --nx-width-text-wrapping: 800px;
+
+  --nx-spacing-base: 4px; // formerly nx-spacing-xxs
+  --nx-spacing-2x: calc(var(--nx-spacing-base) * 2); // formerly nx-spacing-xs
+  --nx-spacing-3x: calc(var(--nx-spacing-base) * 3); // formerly nx-spacing-sm
+  --nx-spacing-4x: calc(var(--nx-spacing-base) * 4); // formerly nx-spacing-md
+  --nx-spacing-6x: calc(var(--nx-spacing-base) * 6); // formerly nx-spacing-l
+  --nx-spacing-8x: calc(var(--nx-spacing-base) * 8); // formerly nx-spacing-xl
+  --nx-spacing-12x: calc(var(--nx-spacing-base) * 12); // formerly nx-spacing-xxl
+  --nx-spacing-16x: calc(var(--nx-spacing-base) * 16); // formerly nx-spacing-xxxl
+  --nx-spacing-20x: calc(var(--nx-spacing-base) * 20);
+
+  --nx-font-size: 16px;
+  --nx-font-size-s: 14px;
+  --nx-font-size-xs: 12px;
+  --nx-font-size-heading-1: 32px;
+  --nx-font-size-heading-2: 22px;
+  --nx-font-size-heading-3: 16px;
+  --nx-font-size-heading-4: 14px;
+
+  --nx-font-family: Open Sans, sans-serif;
+
+  --nx-line-height: 1.5;
+
+  --nx-z-index-submit-mask: 10;
+  --nx-z-index-modal-backdrop: 1050;
+  --nx-z-index-drawer: 1040;
+  --nx-z-index-toast: 1060;
+
+  --nx-border-radius: 6px;
+
+  --nx-border-width: 1px;
+  --nx-border-width-alt: 1px;
+  --nx-border-default: var(--nx-border-width) solid var(--nx-color-border);
+  --nx-border-2x: 2px solid var(--nx-color-border);
+  --nx-border-secondary: 1px solid var(--nx-color-border-secondary);
+
+  --nx-focus-outline-width: 2px;
+  --nx-focus-outline-offset: 2px;
+
+  // for nx-grid
+  --nx-border-grid: var(--nx-border-2x);
+
+  // for dropdown
+  --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(var(--nx-swatch-indigo-hs), 80%, 0.2),
+                            0 1px 2px 0 Hsla(var(--nx-swatch-indigo-hs), 70%, 0.2),
+                            0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 60%, 0.2);
+
+  // for global sidebar
+  --nx-focus-outline-offset-global-sidebar-link: 0px;
+  --nx-focus-outline-offset-global-sidebar-toggle: 1px;
+  --nx-border-width-global-sidebar: 0px;
+
+  //NxTable
+  --nx-outline-width-table-row-hover: 2px;
+
+
+  @include nx-dark-mode-helpers.dark-mode {
+    --nx-border-grid: var(--nx-border-default);
+    --nx-border-width-alt: 2px;
+
+    // for global sidebar
+    --nx-focus-outline-offset-global-sidebar-link: 2px;
+    --nx-focus-outline-offset-global-sidebar-toggle: 0px;
+    --nx-border-width-global-sidebar: 1px;
+
+    --nx-outline-width-table-row-hover: 0px;
+
+    // for dropdown
+    --nx-box-shadow-dropdown: 0 2px 12px 0 Hsla(var(--nx-swatch-indigo-hs), 15%, 0.75),
+                              0 1px 2px 0 Hsla(var(--nx-swatch-indigo-hs), 10%, 0.75),
+                              0 1px 1px 0 Hsla(var(--nx-swatch-indigo-hs), 5%, 0.75);
+  }
+
+  & {
+    // Deprecated variables
+    --nx-border-subsection: 1px solid var(--nx-color-subsection-border);
+    --nx-box-shadow-focus: 0 0 3px 1px var(--nx-color-interactive-shadow-focus);
+    // similar to box-shadow-focus listed above, but for use in drop-shadow filters rather than box-shadow properties
+    --nx-drop-shadow-focus: 0 0 3px var(--nx-color-interactive-shadow-focus);
+  }
+}

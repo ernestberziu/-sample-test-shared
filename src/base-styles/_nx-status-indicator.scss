@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+
+@mixin status-indicator-styling($variant) {
+  background-color: var(--nx-color-status-indicator-#{$variant}-background);
+  color: var(--nx-color-status-indicator-#{$variant}-text);
+  &::before {
+    background-color: var(--nx-color-status-indicator-#{$variant}-icon-background);
+    border-color: var(--nx-color-status-indicator-#{$variant}-icon-border);
+  }
+  &::after {
+    border-color: var(--nx-color-status-indicator-#{$variant}-border);
+  }
+}
+
+.nx-status-indicator {
+  $height: calc(var(--nx-line-height) * var(--nx-font-size));
+  $border-radius: calc(#{$height} * 0.5);
+
+  // common styles
+  border-radius: $border-radius;
+  display: inline-block;
+  font-size: var(--nx-font-size-s);
+  line-height: $height;
+  margin: 0 var(--nx-spacing-2x);
+  padding: 0 var(--nx-spacing-4x) 0 var(--nx-spacing-2x);
+  position: relative;
+  vertical-align: top;
+  &::before {
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin: 6px var(--nx-spacing-3x) 6px 0;
+    vertical-align: bottom;
+  }
+  &::after {
+    // We can't set a border on the nx-status-indicator itself without affecting its height, since it's line-box based.
+    // Instead, create the border on this pseudo-element
+    border-radius: $border-radius;
+    border-style: solid;
+    border-width: 1px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  // negative styles (default)
+  & {
+    @include status-indicator-styling("negative");
+  }
+
+  &--intermediate {
+    @include status-indicator-styling("intermediate");
+  }
+
+  &--positive {
+    @include status-indicator-styling("positive");
+  }
+
+  &--error {
+    @include status-indicator-styling("error");
+  }
+}

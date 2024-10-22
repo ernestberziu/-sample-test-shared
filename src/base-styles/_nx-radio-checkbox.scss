@@ -1,0 +1,106 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+@use '../scss-shared/nx-dark-mode-helpers';
+@use '../scss-shared/nx-radio-checkbox-helpers';
+
+.nx-radio-checkbox {
+  $max-width: 562px;
+
+  @include nx-text-helpers.regular;
+
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: var(--nx-spacing-2x);
+  white-space: nowrap;
+
+  // We have three upper bounds on the width of the element: $max-width, the available space
+  // in the container, and the actual content width. The latter being needed so the click target doesn't extend beyond
+  // the end of the text
+  width: calc(min(#{$max-width}, 100%));
+  max-width: max-content;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+
+    .nx-radio-checkbox__control {
+      @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border-hover));
+    }
+  }
+
+  &:focus-within {
+    .nx-checkbox__box, .nx-radio__focus {
+      position: relative;
+
+      &::after {
+        border: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+        content: '';
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+      }
+    }
+
+    &:hover {
+      .nx-radio-checkbox__control {
+        filter: none;
+      }
+    }
+
+    .nx-radio-checkbox__input:focus {
+      // cancel IE11-specific focus style
+      margin: 0;
+      opacity: 0;
+      outline: none;
+      position: absolute;
+      height: initial;
+      z-index: -1;
+    }
+  }
+
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-radio-checkbox--disabled {
+  &, &:hover {
+    cursor: default;
+  }
+}
+
+.nx-radio-checkbox__control {
+  @include nx-radio-checkbox-helpers.inset-box-shadow(var(--nx-color-interactive-border));
+
+  background-color: var(--nx-color-component-background);
+  border: 0;
+  flex-shrink: 0;
+  margin-right: var(--nx-spacing-2x);
+}
+
+.nx-radio-checkbox__content {
+  @include nx-text-helpers.truncate-ellipsis;
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-radio-checkbox__input {
+  margin: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    // less-nice IE11 focus style because IE11 doesn't support :focus-within
+    margin-right: var(--nx-spacing-base);
+    outline: 1px solid var(--nx-color-interactive-border-focus);
+    opacity: 1;
+    position: static;
+    vertical-align: 5px;
+    width: 0;
+    z-index: 0;
+  }
+}

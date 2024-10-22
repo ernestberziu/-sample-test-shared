@@ -1,0 +1,176 @@
+.ta-btn {
+  height: 32px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-family: Ubuntu;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.33;
+  display: inline-block;
+}
+
+.ta-btn.ta-btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.ta-btn.ta-btn-md {
+  padding: 4px 8px;
+  height: 24px;
+}
+
+.ta-btn.ta-btn-icon-only.ta-btn-md {
+  height: 24px;
+  width: 24px;
+  padding: 4px;
+}
+
+.ta-btn.ta-btn-sm {
+  padding: 4px;
+  height: 20px;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.ta-btn.ta-btn-xl {
+  height: 40px;
+}
+
+.ta-btn.ta-btn-icon-only.ta-btn-xl {
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  font-size: 14px;
+}
+
+.ta-btn.ta-btn-border-md {
+  border-radius: 4px;
+}
+
+.ta-btn.ta-btn-icon-only.ta-btn-sm {
+  height: 20px;
+  width: 20px;
+  padding: 0 4px;
+  line-height: 20px;
+}
+
+.ta-btn.ta-btn-rounded { 
+  border-radius: 50%;
+}
+
+.ta-btn:hover:not(.ta-btn-disabled) {
+  cursor: pointer;
+}
+
+.ta-btn.ta-btn-icon-only {
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.ta-btn.ta-btn-blank {
+  background-color: transparent;
+  color: var(--color-light-grey-100,#b6babd);
+}
+
+.ta-btn.ta-btn-blank:hover {
+  color: var(--color-grey-70-rgba,rgba(80, 90, 94, 0.7));
+}
+
+.ta-btn.ta-btn-blank.ta-btn-icon-only {
+  padding: 0;
+}
+
+.ta-btn.ta-btn-primary {
+  background-color: var(--color-red-100,#cb3b43);
+  color: var(--color-white, #fff);
+}
+
+.ta-btn.ta-btn-primary:hover {
+  background-color: #b6343c;
+}
+
+.ta-btn.ta-btn-primary.ta-btn-ghost {
+  color: var(--color-red-100,#cb3b43);
+  border: 1px solid var(--color-red-100,#cb3b43);
+  background-color: transparent;
+}
+
+.ta-btn.ta-btn-primary.ta-btn-ghost:hover {
+  background-color: rgba(203, 59, 67, 0.15); /* no existing variable for this color */
+}
+
+.ta-btn.ta-btn-secondary {
+  background-color: var(--color-light-grey-100,#b6babd);
+  color: var(--color-grey-100,#505A5E);
+}
+
+.ta-btn.ta-btn-secondary:hover {
+  background-color: #a3a7a9; /* no existing variable for this color */
+}
+
+.ta-btn.ta-btn-secondary.ta-btn-ghost {
+  color: var(--color-light-grey-100,#b6babd);
+  background-color: transparent;
+  border: solid 1px var(--color-light-grey-100,#b6babd);
+}
+
+.ta-btn.ta-btn-secondary.ta-btn-ghost:hover {
+  background-color: rgba(182, 186, 189, 0.15); /* no existing variable for this color */
+}
+
+.ta-btn.ta-btn-tertiary {
+  background-color: var(--color-grey-100,#505A5E);
+  color: var(--color-white, #fff);
+}
+
+.ta-btn.ta-btn-tertiary:hover {
+  background-color: #475054; /* no existing variable for this color */
+}
+
+.ta-btn.ta-btn-tertiary.ta-btn-ghost {
+  background-color: transparent;
+  color: var(--color-grey-100,#505A5E);
+  border: solid 1px var(--color-grey-100,#505A5E);
+}
+
+.ta-btn.ta-btn-tertiary.ta-btn-ghost:hover {
+  background-color: var(--color-grey-15-rgba, rgba(80, 90, 94, 0.15));
+}
+
+.ta-btn.ta-btn-primary.ta-btn-disabled,
+.ta-btn.ta-btn-secondary.ta-btn-disabled,
+.ta-btn.ta-btn-tertiary.ta-btn-disabled {
+  background-color: var(--color-light-grey-40, #E1E3E4);
+  color: var(--color-grey-30-rgba, rgba(80, 90, 94, 0.3));
+}
+
+.ta-btn.ta-btn-primary.ta-btn-disabled:hover,
+.ta-btn.ta-btn-secondary.ta-btn-disabled:hover,
+.ta-btn.ta-btn-tertiary.ta-btn-disabled:hover {
+  background-color: var(--color-light-grey-50, #dadcde);
+}
+
+.ta-btn.ta-btn-primary.ta-btn-ghost.ta-btn-disabled,
+.ta-btn.ta-btn-secondary.ta-btn-ghost.ta-btn-disabled,
+.ta-btn.ta-btn-tertiary.ta-btn-ghost.ta-btn-disabled {
+  border: solid 1px rgba(182, 186, 189, 0.4); /* no existing variable for this color */
+  color: var(--color-grey-30-rgba, rgba(80, 90, 94, 0.3));
+  background-color: transparent;
+}
+
+.ta-btn.ta-btn-primary.ta-btn-ghost.ta-btn-disabled:hover,
+.ta-btn.ta-btn-secondary.ta-btn-ghost.ta-btn-disabled:hover,
+.ta-btn.ta-btn-tertiary.ta-btn-ghost.ta-btn-disabled:hover {
+  background-color: rgba(225, 227, 228, 0.15);
+}
+
+.ta-btn.ta-btn-premium {
+  background: var(--color-yellow-100, #ECD007);
+  border-color: var(--color-yellow-100, #ECD007);
+  color: var(--color-grey-100,#505A5E);
+  font-weight: 700;
+  text-align: center;
+}

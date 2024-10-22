@@ -1,0 +1,151 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-header-variables';
+@use '../scss-shared/nx-container-helpers';
+
+/*
+  #Layout
+*/
+.nx-html, .nx-body {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.nx-body {
+  background-color: var(--nx-color-site-background);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nx-page {
+  $old-sidebar-col-width: min(var(--nx-width-sidebar), var(--nx-width-sidebar-max));
+
+  display: grid;
+  min-width: var(--nx-width-page-min);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  // NOTE: Most of this template is only used when using nx-page-content--full-width (or no nx-page-content at all).
+  // In traditional layouts that use plain nx-page-content, that element manages everything below the second
+  // row of this template.
+  grid-template:
+    'old-header     old-header  old-header' auto
+    'global-sidebar   notices      notices' auto
+    'global-sidebar   header        header' auto
+    'global-sidebar old-sidebar    content' 1fr /
+     auto    $old-sidebar-col-width    1fr;
+}
+
+.nx-page-content {
+  justify-self: center;
+  box-sizing: border-box;
+  display: flex;
+
+  // Cover all columns and the third through last rows of the nx-page grid template
+  grid-area: 3 / 1 / -1 / -1;
+  max-width: var(--nx-width-page-max);
+  overflow-y: hidden;
+  width: 100%;
+
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-page, .nx-page-content {
+  // page-load errors are often at this level and not encapsulated within a nx-page-sidebar or nx-page-main
+  > .nx-alert, > .nx-loading-spinner {
+    align-self: flex-start;
+    grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
+    margin: var(--nx-spacing-6x) auto 0 auto;
+  }
+
+  > .nx-loading-spinner {
+    margin-left: var(--nx-spacing-6x);
+  }
+}
+
+.nx-page-content--full-width {
+  // This element is deprecated, just add the children directly to .nx-page instead
+  display: contents;
+}
+
+.nx-page-sidebar {
+  background-color: var(--nx-color-site-background);
+  box-sizing: border-box;
+
+  // sizing properties for when in .nx-page-sidebar
+  flex: 0 0 var(--nx-width-sidebar);
+  max-width: var(--nx-width-sidebar-max);
+
+  // sizing properties for when in .nx-page-side--full-width or directly within .nx-page.
+  grid-area: old-sidebar;
+  width: 100%; // of the grid track
+
+  overflow-x: hidden;
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x) var(--nx-spacing-2x) var(--nx-spacing-6x);
+  position: relative;
+  white-space: normal;
+
+  + .nx-page-main {
+    // When inner sidebar is present, main should only be in the content area
+    grid-area: content;
+  }
+
+  @include nx-container-helpers.container-vertical;
+}
+
+.nx-page-main {
+  box-sizing: border-box;
+  flex: auto;
+
+  // When inner sidebar is not present, span the sidebar and content areas
+  grid-area: old-sidebar-start / old-sidebar-start / content-end / content-end;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: var(--nx-spacing-6x) var(--nx-spacing-6x);
+  white-space: normal;
+
+  @include nx-container-helpers.container-vertical;
+}
+
+.nx-html--page-scrolling {
+  height: auto;
+  overflow: auto;
+
+  > .nx-body {
+    overflow: visible;
+  }
+
+  .nx-page {
+    min-width: calc(var(--nx-width-page-min) - var(--nx-width-scrollbar));
+    overflow: initial;
+  }
+
+  .nx-page-header, .nx-system-notice, .nx-system-notice-container {
+    position: sticky;
+    z-index: 1;
+  }
+
+  .nx-page-header {
+    top: 0;
+  }
+
+  .nx-system-notice, .nx-system-notice-container {
+    top: nx-header-variables.$main-header-height;
+  }
+
+  .nx-page-content {
+    margin: 0 auto;
+    overflow-y: visible;
+  }
+
+  .nx-page-main {
+    overflow: visible;
+  }
+}

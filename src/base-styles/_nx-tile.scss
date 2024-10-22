@@ -1,0 +1,135 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/nx-container-helpers';
+@use '../scss-shared/nx-text-helpers';
+
+/*
+  #Name-spaced Tile System
+*/
+
+// Base Tiles
+
+.nx-tile {
+  // the "padding" around the inside edge of the nx-tile
+  --nx-tile-spacing: var(--nx-spacing-6x);
+
+  background-color: var(--nx-color-component-background);
+  border-radius: var(--nx-border-radius);
+  margin: var(--nx-spacing-2x) 0 var(--nx-spacing-6x) 0;
+  padding: var(--nx-tile-spacing);
+
+  > .nx-footer, > .nx-form > .nx-footer {
+    margin-top: var(--nx-spacing-8x);
+  }
+
+  @include nx-container-helpers.container-vertical;
+}
+
+// Tile headers
+
+.nx-tile-header__headings {
+  display: contents;
+}
+
+.nx-tile-header {
+  align-items: start;
+  display: grid;
+  grid-template:
+    "title      tags   actions" 40px
+    "subtitle subtitle ." auto /
+     auto       1fr       auto;
+
+  + .nx-tile-content {
+    padding-top: var(--nx-spacing-4x);
+  }
+}
+
+.nx-tile-header__title {
+  @include nx-text-helpers.truncate-ellipsis;
+  grid-area: title;
+
+  h1, h2 {
+    @include nx-text-helpers.truncate-ellipsis;
+    margin: 0;
+    max-width: unset;
+  }
+}
+
+.nx-tile-header__subtitle {
+  @include nx-text-helpers.semi-bold;
+
+  grid-area: subtitle;
+
+  color: var(--nx-color-text-stark);
+  font-size: var(--nx-font-size-heading-3);
+  // There should be an 8px spacing between the title and the subtitle.
+  // The 1px margin-top is calculated from:
+  // 40px (title grid-area height) - 33px (title h2 height) + 1px (this) = 8px
+  margin: 1px 0 0 0;
+  max-width: var(--nx-width-text-wrapping);
+}
+
+.nx-tile__actions {
+  align-self: start;
+  grid-area: actions;
+  margin-left: var(--nx-spacing-6x);
+  text-align: right;
+
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-tile__tags {
+  grid-area: tags;
+  margin-left: var(--nx-spacing-4x);
+
+  .nx-policy-violation-indicator {
+    margin: 0;
+  }
+
+  @include nx-container-helpers.container-horizontal;
+}
+
+.nx-tile-content {
+  @include nx-container-helpers.container-vertical;
+}
+
+.nx-tile-content--accordion-container {
+  background-color: var(--nx-color-accordion-container);
+  margin: var(--nx-spacing-4x) calc(0px - var(--nx-tile-spacing)) 0 calc(0px - var(--nx-tile-spacing));
+  padding: var(--nx-spacing-4x);
+
+  &:last-child {
+    padding-bottom: var(--nx-spacing-4x);
+    margin-bottom: calc(0px - var(--nx-tile-spacing));
+  }
+}
+
+// On pages with tiles with multiple sections these are lighter weight titles
+.nx-tile-subsection {
+  margin-top: var(--nx-spacing-8x);
+
+  // the first subsection should be separated from preceding non-subsection content by a line. The line should not
+  // appear if there is no preceding content within the tile content area, and should not appear if the immediately
+  // preceding element is the header of a parent nx-tile-subsection
+  :not(.nx-tile-subsection__header) + &:first-of-type {
+    border-top: var(--nx-border-default);
+    margin-top: var(--nx-spacing-6x);
+    padding-top: var(--nx-spacing-6x);
+  }
+
+  .nx-tile-subsection__header + & {
+    margin-top: var(--nx-spacing-6x);
+  }
+
+  .nx-tile-subsection__header {
+    margin-bottom: var(--nx-spacing-4x);
+
+    @include nx-container-helpers.container-vertical;
+  }
+
+  @include nx-container-helpers.container-vertical;
+}

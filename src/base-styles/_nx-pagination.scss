@@ -1,0 +1,92 @@
+/*
+ * Copyright (c) 2019-present Sonatype, Inc.
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License 2.0 which accompanies this
+ * distribution and is available at https://www.eclipse.org/legal/epl-2.0/.
+ */
+@use '../scss-shared/_nx-pagination-variables';
+@use '../scss-shared/nx-text-helpers';
+
+%btn-focus-outline {
+  outline: var(--nx-focus-outline-width) solid var(--nx-color-interactive-border-focus);
+  outline-offset: calc(-1px - var(--nx-focus-outline-width) - var(--nx-focus-outline-offset));
+}
+
+.nx-btn-bar--pagination {
+  justify-content: center;
+
+  .nx-btn {
+    border: 1px solid var(--nx-color-tertiary-button-border);
+    min-width: nx-pagination-variables.$pagination-button-height;
+    margin: 0 var(--nx-spacing-2x) 0 0;
+    padding: calc(var(--nx-spacing-2x) - 1px) calc(var(--nx-spacing-4x) - 1px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:last-child, &:first-child {
+      .nx-icon {
+        color: var(--nx-color-text-stark);
+      }
+
+      &:hover {
+        background-color: var(--nx-color-interactive-background-hover);
+        border-color: var(--nx-color-pagination-tertiary-border-hover);
+      }
+
+      &:active {
+        background-color: var(--nx-color-interactive-background-active);
+        border-color: var(--nx-color-pagination-tertiary-border-active);
+        outline: none;
+      }
+
+      &:focus {
+        @extend %btn-focus-outline;
+      }
+    }
+  }
+}
+
+.nx-btn-bar--indeterminate-pagination {
+  .nx-btn {
+    margin: 0 var(--nx-spacing-6x) 0 0;
+  }
+}
+
+.nx-btn.nx-btn--pagination {
+  @include nx-text-helpers.regular;
+  border-color: transparent;
+  color: var(--nx-color-text);
+
+  &:hover {
+    background-color: var(--nx-color-interactive-background-hover);
+    color: var(--nx-color-pagination-tertiary-text-hover);
+  }
+
+  &:focus {
+    @extend %btn-focus-outline;
+    outline-offset: calc(0px - var(--nx-focus-outline-width));
+  }
+
+  &:active {
+    background-color: var(--nx-color-interactive-background-active);
+    color: var(--nx-color-pagination-tertiary-text-active);
+    outline: none;
+  }
+
+  &.selected {
+    &, &:hover {
+      background-color: var(--nx-color-primary-button-background);
+      border-color: transparent;
+      color: var(--nx-color-primary-button-text);
+      cursor: default;
+      font-weight: 600;
+    }
+
+    &:focus {
+      outline: var(--nx-focus-outline-width) solid var(--nx-color-primary-button-focus-outline);
+      outline-offset: calc(0px - var(--nx-focus-outline-width) - var(--nx-focus-outline-offset));
+    }
+  }
+}

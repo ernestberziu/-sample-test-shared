@@ -1,6 +1,6 @@
 {
   "name": "@sample/test-shared",
-  "version": "13.3.2",
+  "version": "0.0.1",
   "description": "Shared components",
   "main": "index.js",
   "scripts": {
@@ -96,5 +96,7 @@
     "index.js",
     "fontawesomeConfig.js",
     "*.scss"
-  ]
+  ],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@sample/test-shared",
+  "name": "sample-test-shared",
   "version": "1.0.0",
   "description": "Shared components",
   "main": "index.js",
@@ -98,5 +98,13 @@
     "*.scss"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernestberziu/-sample-test-shared.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ernestberziu/-sample-test-shared/issues"
+  },
+  "homepage": "https://github.com/ernestberziu/-sample-test-shared#readme"
 }

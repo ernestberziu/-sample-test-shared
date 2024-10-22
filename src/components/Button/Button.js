@@ -2,7 +2,7 @@ import React from 'react';
 // import FontAwesome5 from '@timify/react-font-awesome5'
 import PropTypes from 'prop-types';
 
-import './Button.css';
+import './Button.scss';
 
 const TYPES = {
   isPrimary: 'ta-btn-primary',

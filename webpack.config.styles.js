@@ -12,8 +12,32 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+  ],
   module: {
     rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: true,
+              modules: {
+                namedExport: true,
+                localIdentName: 'foo__[name]__[local]',
+              },
+            },
+          },
+        ],
+      },
       {
         test: /\.(t|j)sx?$/,
         loader: 'ts-loader',
@@ -21,28 +45,6 @@ module.exports = {
         options: {
           configFile: path.resolve(__dirname, 'jsconfig.styles.json'),
         },
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          { loader: MiniCssExtractPlugin.loader },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          { loader: 'resolve-url-loader' },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              sassOptions: {
-                outputStyle: 'compressed',
-              },
-            },
-          },
-        ],
       },
       {
         include: [path.resolve(__dirname, 'src/assets')],
@@ -56,12 +58,9 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new IgnoreEmitPlugin(/\.([jt]s(\.map)?|woff)$/),
-  ],
   devtool: 'source-map',
   optimization: {
+    minimize: true,
     sideEffects: false,
   },
 };

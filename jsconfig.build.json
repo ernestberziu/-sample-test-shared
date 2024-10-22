@@ -2,7 +2,6 @@
   "extends": "./jsconfig.json",
   "exclude": [
     "node_modules",
-    "dist/",
-    "src/react-shared-components-css.js"
+    "dist/"
   ]
 }

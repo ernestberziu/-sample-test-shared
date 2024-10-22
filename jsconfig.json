@@ -25,7 +25,4 @@
     "inlineSources": true 
   },
   "include": ["src"],
-  "exclude": [
-    "src/react-shared-components-css.js"
-  ]
 }

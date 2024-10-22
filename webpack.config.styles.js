@@ -4,7 +4,7 @@ const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './src/react-shared-components-css.js',
+  entry: './src',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '',
@@ -57,9 +57,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'react-shared-components.css',
-    }),
+    new MiniCssExtractPlugin(),
     new IgnoreEmitPlugin(/\.([jt]s(\.map)?|woff)$/),
   ],
   devtool: 'source-map',

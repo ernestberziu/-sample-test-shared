@@ -55,7 +55,6 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.25.9",
-    "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@types/prop-types": "^15.7.5",
     "prop-types": "^15.8.1"
   },
@@ -65,7 +64,6 @@
   },
   "sideEffects": [
     "index.js",
-    "fontawesomeConfig.js",
     "*.css"
   ],
   "author": "",

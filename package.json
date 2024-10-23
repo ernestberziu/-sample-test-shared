@@ -1,6 +1,6 @@
 {
   "name": "ernest-sample-shared",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Shared components",
   "main": "index.js",
   "scripts": {

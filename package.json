@@ -1,11 +1,11 @@
 {
   "name": "ernest-sample-shared",
-  "version": "1.0.12",
+  "version": "1.0.15",
   "description": "Shared components",
   "main": "index.js",
   "scripts": {
     "build": "npm-run-all -p compile-ts compile-css copy-css copy-package-json copy-assets",
-    "watch": "npm-run-all -p lint compile-ts-watch compile-css-watch copy-css-watch copy-package-json-watch copy-assets-watch",
+    "watch": "npm-run-all -p compile-ts-watch compile-css-watch copy-css-watch copy-package-json-watch copy-assets-watch",
     "lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ \"./src/**/*.{js,ts}{,x}\"",
     "ci-lint": "eslint --ignore-pattern __tests__ --ignore-pattern __mocks__ --ignore-pattern __testutils__ \"./src/**/*.{js,ts}{,x}\" --max-warnings=0",
     "lint-tests": "eslint \"./src/**/{__tests__,__mocks__,__testutils__}/**/*.{js,ts}{,x}\"",
@@ -29,13 +29,6 @@
     "version": "versync -b sync -a"
   },
   "devDependencies": {
-    "@testing-library/dom": "^9.3.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.1",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "cpx": "^1.2.1",
@@ -52,12 +45,7 @@
     "npm-run-all": "^4.1.5",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "resolve-url-loader": "^5.0.0",
     "rimraf": "^4.0.0",
-    "sass": "^1.77.8",
-    "sass-loader": "^13.2.2",
-    "source-map-loader": "^4.0.1",
-    "style-loader": "^4.0.0",
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.2",
     "typescript": "~5.0.0",
@@ -69,8 +57,6 @@
     "@babel/preset-env": "^7.25.9",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@types/prop-types": "^15.7.5",
-    "babel-loader": "^9.2.1",
-    "pretty-bytes": "^6.1.0",
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
